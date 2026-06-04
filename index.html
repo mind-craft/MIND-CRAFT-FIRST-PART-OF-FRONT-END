@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIND CRAFTS - Secure Portal</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="chat-base.css">
+    <link rel="stylesheet" href="chat-sidebar.css">
+    <link rel="stylesheet" href="chat-messages.css">
+    <link rel="stylesheet" href="chat-input.css">
+    <link rel="stylesheet" href="chat-responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-surface"></div>
+    
+    <!-- Authentication Entry Point -->
+    <main class="app-card" id="mainContainer">
+        <header class="app-header">
+            <div class="app-logo">
+                <img src="generated-image-9d3d2e6a-2ac1-4f5f-b0f6-cff677c99264.png" alt="MIND CRAFTS Logo" class="brand-logo-img">
+            </div>
+            <h1 class="brand-title">MIND CRAFTS</h1>
+            <p class="brand-tagline" id="tagline">The future of secure creation</p>
+        </header>
+
+        <div class="form-viewport">
+            <!-- Forms are dynamically toggled via auth.js -->
+            <form id="signup-form" class="auth-form active">
+                <div class="field-group">
+                    <label for="reg-username">Username</label>
+                    <div class="input-container">
+                        <i class="icon-user"></i>
+                        <input type="text" id="reg-username" placeholder="Choose a username" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="reg-password">Password</label>
+                    <div class="input-container">
+                        <i class="icon-lock"></i>
+                        <input type="password" id="reg-password" placeholder="Create password" required autocomplete="new-password">
+                        <button type="button" class="eye-toggle" data-target="reg-password">
+                            <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                    <div class="checklist" id="pw-checklist">
+                        <div class="check-item" data-rule="length"><span>Min. 8 characters</span></div>
+                        <div class="check-item" data-rule="upper"><span>Uppercase (A-Z)</span></div>
+                        <div class="check-item" data-rule="lower"><span>Lowercase (a-z)</span></div>
+                        <div class="check-item" data-rule="number"><span>Number (0-9)</span></div>
+                        <div class="check-item" data-rule="special"><span>Special character</span></div>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="input-container">
+                        <i class="icon-lock"></i>
+                        <input type="password" id="confirm-password" placeholder="Repeat password" required autocomplete="new-password">
+                        <button type="button" class="eye-toggle" data-target="confirm-password">
+                            <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                    <span class="error-text" id="confirm-error">Passwords do not match</span>
+                </div>
+
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+
+            <form id="login-form" class="auth-form">
+                <div class="field-group">
+                    <label for="login-username">Username</label>
+                    <div class="input-container">
+                        <i class="icon-user"></i>
+                        <input type="text" id="login-username" placeholder="Username" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="login-password">Password</label>
+                    <div class="input-container">
+                        <i class="icon-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password">
+                        <button type="button" class="eye-toggle" data-target="login-password">
+                            <svg class="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+        </div>
+
+        <div class="separator"><span>Or continue with</span></div>
+        <button type="button" class="btn-google" id="google-auth">
+            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"/>
+            </svg>
+            Sign in with Google
+        </button>
+
+        <footer class="app-footer">
+            <p id="toggle-wrapper">Already have an account? <a href="javascript:void(0)" id="go-to-login" class="text-link">Sign In</a></p>
+        </footer>
+    </main>
+
+    <!-- UI Feedback Overlays -->
+    <div id="notice-overlay" class="overlay">
+        <div class="notice-card">
+            <div class="notice-icon">✓</div>
+            <h2 id="notice-title">Success</h2>
+            <p id="notice-msg">You have successfully signed in.</p>
+        </div>
+    </div>
+
+    <!-- AI Dashboard Shell -->
+    <div id="chatbot-dashboard" class="dashboard-hidden">
+        <!-- Visual Effects Layer -->
+        <div class="ai-bg-effects">
+            <canvas id="networkCanvas" class="network-canvas"></canvas>
+            <div class="aurora-container">
+                <div class="aurora-element aurora-1"></div>
+                <div class="aurora-element aurora-2"></div>
+                <div class="aurora-element aurora-3"></div>
+            </div>
+            <div class="cyber-grid"></div>
+            <div class="noise-overlay"></div>
+        </div>
+
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <aside class="chat-sidebar" id="chatSidebar">
+            <div class="sidebar-header">
+                <img src="generated-image-9d3d2e6a-2ac1-4f5f-b0f6-cff677c99264.png" alt="Logo" class="sidebar-logo">
+                <h3>MIND CRAFTS</h3>
+            </div>
+            <button class="new-chat-btn" id="newChatBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                New Chat
+            </button>
+            <div class="chat-history" id="chatHistory"></div>
+        </aside>
+
+        <main class="chat-main" id="chatMain">
+            <!-- Hero Landing State -->
+            <div class="hero-section" id="heroSection">
+                <h1 class="hero-title">MIND CRAFTS AI</h1>
+                <p class="hero-subtitle">Create, Learn, Build and Explore with Advanced AI</p>
+                <div class="hero-input-container" id="heroInputContainer">
+                    <div class="animated-border"></div>
+                    <div class="media-preview-container" id="mediaPreview" style="display: none;"></div>
+                    <div class="input-wrapper-chat hero-input">
+                        <button class="media-upload-btn" id="mediaUploadBtn" title="Attach media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></button>
+                        <input type="file" id="mediaInput" accept="image/*,video/*,.pdf,.txt,.doc,.docx" style="display: none;" multiple>
+                        <textarea id="chatInput" placeholder="Message MIND CRAFTS AI..." rows="1"></textarea>
+                        <button class="voice-record-btn" id="voiceRecordBtn" title="Voice message"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
+                        <button class="stop-generate-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"></rect></svg></button>
+                        <button class="send-btn" id="sendBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+                    </div>
+                    <div class="action-chips-container" id="actionChips">
+                        <button class="action-chip" data-prompt="Calculate multi-axis loads for my structure"><svg class="chip-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>Calculate Loads</button>
+                        <button class="action-chip" data-prompt="Generate a professional 2D structural blueprint"><svg class="chip-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>2D Blueprint</button>
+                        <button class="action-chip" data-prompt="Run a stress and physics simulation"><svg class="chip-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Stress Analysis</button>
+                        <button class="action-chip" data-prompt="Optimize material cost while preserving strength"><svg class="chip-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>Cost Optimize</button>
+                        <button class="action-chip" data-prompt="Create an interactive 3D structural model"><svg class="chip-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>3D Model</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Conversation Container -->
+            <div class="messages-container" id="messagesContainer"></div>
+
+            <!-- Sticky Chat Input (Shown during active session) -->
+            <div class="chat-input-container" id="bottomInputContainer" style="display: none;">
+                <div class="media-preview-container" id="mediaPreviewBottom" style="display: none;"></div>
+                <div class="input-wrapper-chat">
+                    <button class="media-upload-btn" id="mediaUploadBtnBottom" title="Attach media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></button>
+                    <input type="file" id="mediaInputBottom" accept="image/*,video/*,.pdf,.txt,.doc,.docx" style="display: none;" multiple>
+                    <textarea id="chatInputBottom" placeholder="Message MIND CRAFTS AI..." rows="1"></textarea>
+                    <button class="voice-record-btn" id="voiceRecordBtnBottom" title="Voice message"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
+                    <button class="stop-generate-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"></rect></svg></button>
+                    <button class="send-btn" id="sendBtnBottom"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="chat-state.js"></script>
+    <script src="chat-network.js"></script>
+    <script src="chat-media.js"></script>
+    <script src="chat-ui.js"></script>
+    <script src="chat-ai.js"></script>
+    <script src="auth.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="chat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

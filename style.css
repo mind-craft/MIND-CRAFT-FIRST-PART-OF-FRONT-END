@@ -1,0 +1,12 @@
+/* 
+ * TOMBSTONE FILE - This file has been refactored into modules
+ * All styles moved to:
+ * - main.css (global styles & variables)
+ * - auth.css (authentication UI)
+ * - chat.css (chatbot dashboard)
+ * 
+ * This file is kept for reference but no longer used.
+ * See index.html for the new import structure.
+ */
+
+/* removed: all CSS rules (~800 lines) */

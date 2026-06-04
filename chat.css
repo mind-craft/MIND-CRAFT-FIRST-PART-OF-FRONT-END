@@ -1,0 +1,29 @@
+/* 
+ * TOMBSTONE FILE - This file has been refactored into modules
+ * All chat styles moved to:
+ * - chat-base.css (dashboard container, toggle, background effects, hero)
+ * - chat-sidebar.css (sidebar, history, new chat button)
+ * - chat-messages.css (messages container, avatars, typing indicator)
+ * - chat-input.css (input area and send button)
+ * - chat-responsive.css (all media queries)
+ * 
+ * This file is kept for reference but no longer used.
+ * See index.html for the new import structure.
+ */
+
+/* removed: #chatbot-dashboard {} */
+/* removed: .sidebar-toggle {} */
+/* removed: .ai-bg-effects {} */
+/* removed: .chat-sidebar {} */
+/* removed: .chat-main {} */
+/* removed: .hero-section {} */
+/* removed: .messages-container {} */
+/* removed: .message {} */
+/* removed: .message-avatar {} */
+/* removed: .message-content {} */
+/* removed: .typing-indicator {} */
+/* removed: .chat-input-container {} */
+/* removed: .input-wrapper-chat {} */
+/* removed: .send-btn {} */
+/* removed: all @media queries {} */
+/* removed: all @keyframes {} */
